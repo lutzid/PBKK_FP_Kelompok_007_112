@@ -6,7 +6,6 @@ use MyModel\BaseModel;
 
 class Kamar extends BaseModel
 {
-    
     public $id_kost;
     public $nama;
     public $harga;

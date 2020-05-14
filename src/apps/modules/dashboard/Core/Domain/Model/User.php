@@ -2,7 +2,6 @@
 
 namespace MyModel;
 
-use Phalcon\Mvc\Model;
 use MyModel\BaseModel;
 
 class User extends BaseModel

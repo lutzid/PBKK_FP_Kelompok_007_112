@@ -6,7 +6,6 @@ use MyModel\BaseModel;
 
 class KostFasilitasKost extends BaseModel
 {
-    
     public $id_kost;
     public $id_fasilitas_kost;
 
