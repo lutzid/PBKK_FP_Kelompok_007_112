@@ -11,6 +11,24 @@ class KostPeriodeKost extends BaseModel
 
     public function initialize () {
         $this->setSource('kostperiodekost');
+
+        $this->belongsTo(
+            'id_kost',
+            'MyModel\Kost',
+            'id',
+            [
+                'alias' => 'Kost',
+            ]
+        );
+
+        $this->belongsTo(
+            'id_periode_kost',
+            'MyModel\PeriodeKost',
+            'id',
+            [
+                'alias' => 'PeriodeKost',
+            ]
+        );
     }
 
     public function registrasi($data)

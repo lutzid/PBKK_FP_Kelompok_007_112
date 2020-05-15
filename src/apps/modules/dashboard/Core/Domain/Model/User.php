@@ -18,7 +18,25 @@ class User extends BaseModel
     public $foto_ktp;
 
     public function initialize () {
-        $this->setSource('user');
+        $this->setSource('users');
+
+        $this->hasMany(
+            'id',
+            'MyModel\Kost',
+            'id_user',
+            [
+                'alias' => 'Kost'
+            ]
+        );
+
+        $this->hasMany(
+            'id',
+            'MyModel\Transaksi',
+            'id_user',
+            [
+                'alias' => 'Transaksi'
+            ]
+        );
     }
 
     public function registrasi($data)

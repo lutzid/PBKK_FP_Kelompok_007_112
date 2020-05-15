@@ -19,6 +19,24 @@ class Transaksi extends BaseModel
 
     public function initialize () {
         $this->setSource('transaksi');
+
+        $this->belongsTo(
+            'id_user',
+            'MyModel\User',
+            'id',
+            [
+                'alias' => 'User',
+            ]
+        );
+
+        $this->belongsTo(
+            'id_kamar',
+            'MyModel\Kamar',
+            'id',
+            [
+                'alias' => 'Kamar',
+            ]
+        );
     }
 
     public function registrasi($data)
@@ -28,6 +46,9 @@ class Transaksi extends BaseModel
         $this->id_user = $data['id_user'];
         $this->waktu_mulai = $data['waktu_mulai'];
         $this->waktu_selesai = $data['waktu_selesai'];
+        $this->admin = $data['admin'];
+        $this->sub_total = $data['sub_total'];
+        $this->total = $data['total'];
         $this->status = $data['status'];
         $this->metode_pembayaran = $data['metode_pembayaran'];
         $this->bukti_pembayaran = $data['bukti_pembayaran'];

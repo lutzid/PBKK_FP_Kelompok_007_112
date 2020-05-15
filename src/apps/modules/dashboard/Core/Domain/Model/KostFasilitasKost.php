@@ -11,6 +11,24 @@ class KostFasilitasKost extends BaseModel
 
     public function initialize () {
         $this->setSource('kostfasilitaskost');
+
+        $this->belongsTo(
+            'id_kost',
+            'MyModel\Kost',
+            'id',
+            [
+                'alias' => 'Kost',
+            ]
+        );
+
+        $this->belongsTo(
+            'id_fasilitas_kost',
+            'MyModel\FasilitasKost',
+            'id',
+            [
+                'alias' => 'FasilitasKost',
+            ]
+        );
     }
 
     public function registrasi($data)

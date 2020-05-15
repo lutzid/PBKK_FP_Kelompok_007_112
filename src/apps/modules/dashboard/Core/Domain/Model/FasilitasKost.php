@@ -10,6 +10,15 @@ class FasilitasKost extends BaseModel
 
     public function initialize () {
         $this->setSource('fasilitaskost');
+
+        $this->hasMany(
+            'id',
+            'MyModel\KostFasilitasKost',
+            'id_fasilitas_kost',
+            [
+                'alias' => 'KostFasilitasKost'
+            ]
+        );
     }
 
     public function registrasi($data)

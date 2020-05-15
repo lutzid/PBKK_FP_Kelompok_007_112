@@ -13,6 +13,42 @@ class Kost extends BaseModel
 
     public function initialize () {
         $this->setSource('kost');
+
+        $this->belongsTo(
+            'id_user',
+            'MyModel\User',
+            'id',
+            [
+                'alias' => 'User',
+            ]
+        );
+
+        $this->hasMany(
+            'id',
+            'MyModel\Kamar',
+            'id_kost',
+            [
+                'alias' => 'Kamar'
+            ]
+        );
+
+        $this->hasMany(
+            'id',
+            'MyModel\KostFasilitasKost',
+            'id_kost',
+            [
+                'alias' => 'KostFasilitasKost'
+            ]
+        );
+
+        $this->hasMany(
+            'id',
+            'MyModel\KostPeriodeKost',
+            'id_kost',
+            [
+                'alias' => 'KostPeriodeKost'
+            ]
+        );
     }
 
     public function registrasi($data)

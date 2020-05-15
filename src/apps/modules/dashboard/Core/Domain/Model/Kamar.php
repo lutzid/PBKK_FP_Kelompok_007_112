@@ -15,6 +15,24 @@ class Kamar extends BaseModel
 
     public function initialize () {
         $this->setSource('kamar');
+
+        $this->belongsTo(
+            'id_kost',
+            'MyModel\Kost',
+            'id',
+            [
+                'alias' => 'Kost',
+            ]
+        );
+
+        $this->hasMany(
+            'id',
+            'MyModel\Transaksi',
+            'id_kamar',
+            [
+                'alias' => 'Transaksi'
+            ]
+        );
     }
 
     public function registrasi($data)

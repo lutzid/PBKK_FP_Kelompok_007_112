@@ -10,6 +10,15 @@ class PeriodeKost extends BaseModel
 
     public function initialize () {
         $this->setSource('periodekost');
+
+        $this->hasMany(
+            'id',
+            'MyModel\KostPeriodeKost',
+            'id_periode_kost',
+            [
+                'alias' => 'KostPeriodeKost'
+            ]
+        );
     }
 
     public function registrasi($data)
