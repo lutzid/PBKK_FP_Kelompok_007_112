@@ -10,6 +10,9 @@ class Transaksi extends BaseModel
     public $id_user;
     public $waktu_mulai;
     public $waktu_selesai;
+    public $admin;
+    public $sub_total;
+    public $total;
     public $status;
     public $metode_pembayaran;
     public $bukti_pembayaran;
