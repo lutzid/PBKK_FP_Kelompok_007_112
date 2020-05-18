@@ -3,6 +3,7 @@
 namespace Its\Example\Dashboard\Presentation\Web\Controller;
 
 use Phalcon\Mvc\Controller;
+use MyModel\Kost;
 
 class OwnerController extends Controller
 {

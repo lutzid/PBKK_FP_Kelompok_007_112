@@ -1,5 +1,6 @@
 <?php
 
+use Phalcon\Escaper;
 use Phalcon\Session\Manager as SessionManager;
 use Phalcon\Session\Adapter\Stream as Session;
 use Phalcon\Security;
@@ -12,11 +13,11 @@ use Phalcon\Mvc\View\Engine\Volt;
 use Phalcon\Flash\Direct as FlashDirect;
 use Phalcon\Flash\Session as FlashSession;
 
-$container['config'] = function() use ($config) {
-	return $config;
+$container['config'] = function () use ($config) {
+    return $config;
 };
 
-$container->setShared('session', function() {
+$container->setShared('session', function () {
 
     $session = new SessionManager();
     $files = new Session(
@@ -28,10 +29,10 @@ $container->setShared('session', function() {
         ->setAdapter($files)
         ->start();
 
-	return $session;
+    return $session;
 });
 
-$container['dispatcher'] = function() {
+$container['dispatcher'] = function () {
 
     $eventsManager = new Manager();
 
@@ -58,16 +59,16 @@ $container['dispatcher'] = function() {
     return $dispatcher;
 };
 
-$container['url'] = function() use ($config) {
-	$url = new \Phalcon\Url();
+$container['url'] = function () use ($config) {
+    $url = new \Phalcon\Url();
 
     $url->setBaseUri($config->url['baseUrl']);
 
-	return $url;
+    return $url;
 };
 
 $container['voltService'] = function (ViewBaseInterface $view) use ($container, $config) {
-    
+
     $volt = new Volt($view, $container);
 
     if (!is_dir($config->application->cacheDir)) {
@@ -86,7 +87,7 @@ $container['voltService'] = function (ViewBaseInterface $view) use ($container, 
             'prefix'    => '-prefix-',
         ]
     );
-    
+
     return $volt;
 };
 
@@ -117,14 +118,14 @@ $container->set(
 $container->set(
     'flash',
     function () {
-        $flash = new FlashDirect(
-            [
-                'error'   => 'alert alert-danger',
-                'success' => 'alert alert-success',
-                'notice'  => 'alert alert-info',
-                'warning' => 'alert alert-warning',
-            ]
-        );
+        $escaper = new Escaper();
+        $flash   = new FlashDirect($escaper);
+        $flash->setCssClasses([
+            'error'   => 'alert alert-danger',
+            'success' => 'alert alert-success',
+            'notice'  => 'alert alert-info',
+            'warning' => 'alert alert-warning'
+        ]);
 
         return $flash;
     }
@@ -133,17 +134,17 @@ $container->set(
 $container->set(
     'flashSession',
     function () {
-        $flash = new FlashSession(
-            [
-                'error'   => 'alert alert-danger',
-                'success' => 'alert alert-success',
-                'notice'  => 'alert alert-info',
-                'warning' => 'alert alert-warning',
-            ]
-        );
+        $escaper = new Escaper();
+        $flash   = new FlashSession($escaper);
+        $flash->setCssClasses([
+            'error'   => 'alert alert-danger',
+            'success' => 'alert alert-success',
+            'notice'  => 'alert alert-info',
+            'warning' => 'alert alert-warning'
+        ]);
 
         $flash->setAutoescape(false);
-        
+
         return $flash;
     }
 );

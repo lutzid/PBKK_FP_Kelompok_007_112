@@ -89,16 +89,14 @@ Home
                 {#
                     @foreach ($kosts as $kost)
                 #}
+                {% for kost in kosts %}
                     <div class="card-deck col-md-4" style="margin-bottom: 2.5%;">
                         {#
                         <a href="{{ route('kost.show', $kost->id) }}" style="color: black; text-decoration: none;">
                         #}
                             <div class="card">
                                 <div class="card-header p-0">
-                                    Foto Kost
-                                    {#
-                                    <img src="{{ url('img_kost').'/'. $kost->fotoKost[0]->nama}}" alt="" height="150vh" width="100%">
-                                    #}
+                					{{ image(url('img/kost.png'), "width":"100%", "height":"150vh") }}
                                 </div>
                                 <div class="card-body" style="padding-top: 1%">
                                     <div style="text-align: right;">
@@ -106,15 +104,12 @@ Home
                                             Available
                                         </span>
                                     </div>
-                                    <h4 class="myheader">Nama Kost</h4>
+                                    <h4 class="myheader">{{ kost.nama }}</h4>
                                     <div>
-                                        Alamat Kost
+                                        {{ kost.alamat }}
                                     </div>
                                     <div>
-                                        Rating Kost
-                                    </div>
-                                    <div>
-                                        berapa room available
+                                        1 room available
                                     </div>
                                 </div>
                             </div>
@@ -122,6 +117,7 @@ Home
                         </a>
                         #}
                     </div>
+                {% endfor %}
                 {#
                     @endforeach
                 #}

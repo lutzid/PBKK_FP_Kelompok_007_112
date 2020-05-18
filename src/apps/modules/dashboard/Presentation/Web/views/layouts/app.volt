@@ -142,7 +142,34 @@
 
                         <!-- Authentication Links -->
 							{% if session.has('auth') %}
-							
+							{% if session.get('auth').peran == "Perantau" %}
+                            <li class="nav-item">
+								{{ link_to('dashboard/owner/kost', 'MY KOST', 'class':'nav-link', 'style':'color: white; font-weight: bold;') }}
+                            </li>
+							{% elseif session.get('auth').peran == "Pemilik" %}
+                            <li class="nav-item">
+								{{ link_to('dashboard/owner/index', 'MY PROPERTY', 'class':'nav-link', 'style':'color: white; font-weight: bold;') }}
+                            </li>
+							{% endif %}
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+									{{ session.get('auth').nama }}
+                                    <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/dashboard/home/profile/{{ session.get('auth').id }}">
+                                        Profile
+                                    </a>
+                                    <a class="dropdown-item" href="{{ url('/dashboard/authentication/logout') }}" onclick="event.preventDefault();
+                                                                                                    document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
+
+                                    <form id="logout-form" action="{{ url('/dashboard/authentication/logout') }}" method="POST" style="display: none;">
+                                    </form>
+                                </div>
+                            </li>
 							{% else %}
                             <li class="nav-item">
 								{{ link_to('dashboard/index/register', 'REGISTER', 'class':'nav-link', 'style':'color: white; font-weight: bold;') }}
@@ -244,4 +271,5 @@
 	</body>
 	<!-- Scripts -->
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </html>

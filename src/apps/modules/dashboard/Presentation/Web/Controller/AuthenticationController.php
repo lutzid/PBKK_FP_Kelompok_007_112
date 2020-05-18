@@ -26,11 +26,11 @@ class AuthenticationController extends Controller
         );
         if($user == false){
             $this->flashSession->error("Email atau Password yang anda inputkan salah.");
-            return $this->response->redirect('login');
+            return $this->response->redirect('/dashboard/authentication/index');
         }else{
             if(!$this->security->checkHash($pass, $user->password)){
                 $this->flashSession->error("Email atau Password yang anda inputkan salah.");
-                return $this->response->redirect('login');
+                return $this->response->redirect('/dashboard/authentication/index');
             }
             $this->session->set('auth', $user);
         }
@@ -44,6 +44,6 @@ class AuthenticationController extends Controller
         $this->session->destroy();
         $this->flashSession->success("Anda berhasil logout.");
 
-        return $this->response->redirect('login');
+        return $this->response->redirect('/');
     }
 }

@@ -3,12 +3,14 @@
 namespace Its\Example\Dashboard\Presentation\Web\Controller;
 
 use Phalcon\Mvc\Controller;
+use MyModel\Kost;
 
 class IndexController extends Controller
 {
     public function indexAction()
     {
-
+        $kosts = Kost::find();
+        $this->view->setVar("kosts", $kosts);
     }
 
     public function registerAction()
