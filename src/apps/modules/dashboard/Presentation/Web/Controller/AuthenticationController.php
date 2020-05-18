@@ -6,12 +6,7 @@ use Phalcon\Mvc\Controller;
 
 class AuthenticationController extends Controller
 {
-    public function registerAction()
-    {
-
-    }
-
-    public function createAction()
+    public function indexAction()
     {
         
     }
@@ -20,6 +15,7 @@ class AuthenticationController extends Controller
     {
 
     }
+    
 
     public function logoutAction()
     {

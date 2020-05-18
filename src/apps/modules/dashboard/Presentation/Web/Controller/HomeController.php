@@ -6,11 +6,6 @@ use Phalcon\Mvc\Controller;
 
 class HomeController extends Controller
 {
-    public function indexAction()
-    {
-       
-    }
-
     public function profileAction($id){
         // $user = User::findFirst(
         //     [
