@@ -28,6 +28,7 @@ class KamarController extends Controller
             ]
         );
         
+        $this->view->kost = $kost;
     }
 
     public function storeAction()
