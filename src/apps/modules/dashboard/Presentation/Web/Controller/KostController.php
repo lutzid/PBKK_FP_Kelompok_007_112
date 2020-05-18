@@ -44,6 +44,7 @@ class KostController extends Controller
         }
     }
 
+    //2. Melihat detail informasi sebuah indekos
     public function showAction()
     { 
         $id = $this->dispatcher->getParam("id");

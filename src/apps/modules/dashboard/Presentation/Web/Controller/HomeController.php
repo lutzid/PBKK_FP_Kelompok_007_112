@@ -7,6 +7,7 @@ use MyModel\User;
 
 class HomeController extends Controller
 {
+    //4. Melihat data akun miliknya sendiri
     public function profileAction($id){
         $user = User::findFirst(
             [
@@ -33,6 +34,7 @@ class HomeController extends Controller
         $this->view->user = $user;
     }
 
+    //5. Mengubah data akun miliknya sendiri
     public function updateAction($id)
     {
         if($this->request->isPost())
@@ -65,13 +67,18 @@ class HomeController extends Controller
         }
     }
 
+    //1. Melakukan pencarian indekos
     public function searchAction()
     {
-        $builder->from(Kost::class)
-                ->where('nama LIKE :search:', 
-                    [
-                        'search' => '%' . $search . '%',
-                    ]
-        );
+        $kosts = $this->modelsManager
+                    ->createBuilder()
+                    ->from(Kost::class)
+                    ->where('nama LIKE :search:', 
+                        [
+                            'search' => '%' . $search . '%',
+                        ]
+                    )
+                    ->getQuery()
+                    ->execute();
     }
 }

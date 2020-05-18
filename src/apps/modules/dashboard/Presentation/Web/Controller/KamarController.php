@@ -31,6 +31,7 @@ class KamarController extends Controller
         $this->view->kost = $kost;
     }
 
+    //6. Menambahkan kamar di sebuah indekos
     public function storeAction()
     {
         if($this->request->isPost())
@@ -40,6 +41,7 @@ class KamarController extends Controller
             $data = $_POST;
             $data['id'] = $random->base64Safe();
             $data['id_kost'] = $id;
+            $data['harga'] = (float)str_replace('.', '', $data['harga']);
             $data['status'] = 'Available';
 
             $kamar = new Kamar();
@@ -68,6 +70,7 @@ class KamarController extends Controller
         $this->view->kamar = $kamar;
     }
 
+    //7. Mengubah kamar di sebuah indekos
     public function updateAction()
     {
         $id = $this->dispatcher->getParam("id");
@@ -93,6 +96,7 @@ class KamarController extends Controller
         }
     }
 
+    //8. Menghapus kamar di sebuah indekos
     public function destroyAction()
     {
         $id = $this->dispatcher->getParam("id");

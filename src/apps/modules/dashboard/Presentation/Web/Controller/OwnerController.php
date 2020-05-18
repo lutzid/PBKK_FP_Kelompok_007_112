@@ -17,6 +17,7 @@ class OwnerController extends Controller
 
     // }
 
+    //12. Melihat profil miliknya sendiri
     public function kostAction()
     {
         $id = $this->session->get('auth')->id;
