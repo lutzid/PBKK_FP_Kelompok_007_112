@@ -15,6 +15,5 @@ class IndexController extends Controller
         // $result = $db->fetchOne($sql, \Phalcon\Db\Enum::FETCH_ASSOC);
 
         // echo var_dump($result);
-        echo "hai";
     }
 }
