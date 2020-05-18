@@ -14,6 +14,7 @@ class User extends BaseModel
     public $alamat_ktp;
     public $alamat_domisili;
     public $no_hp;
+    public $peran;
     public $foto_profil;
     public $foto_ktp;
 
@@ -50,6 +51,7 @@ class User extends BaseModel
         $this->alamat_ktp = $data['alamat_ktp'];
         $this->alamat_domisili = $data['alamat_domisili'];
         $this->no_hp = $data['no_hp'];
+        $this->peran = $data['peran'];
         $this->foto_profil = $data['foto_profil'];
         $this->foto_ktp = $data['foto_ktp'];
     }
