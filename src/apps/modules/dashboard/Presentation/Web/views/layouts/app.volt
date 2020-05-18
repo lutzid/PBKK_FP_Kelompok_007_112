@@ -2,15 +2,15 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<meta
-		name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<title>TEMANRANTAU - {% block title %}{% endblock %}
+		<title>TEMANRANTAU -
+			{% block title %}{% endblock %}
 		</title>
 
 		<!-- Styles -->
 		{#    <link href="{{ asset('css/app.css') }}" rel="stylesheet"> #}
-        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 		<style>
 			@font-face {
 				font-family: 'Segoe UI Regular';
@@ -138,118 +138,59 @@
 						<ul class="navbar-nav mr-auto"></ul>
 
 						<!-- Right Side Of Navbar -->
-						<ul class="navbar-nav ml-auto">
+						<ul
+							class="navbar-nav ml-auto">
 
-                        <!-- Authentication Links -->
+							<!-- Authentication Links -->
 							{% if session.has('auth') %}
-							{% if session.get('auth').peran == "Perantau" %}
-                            <li class="nav-item">
-								{{ link_to('dashboard/owner/kost', 'MY KOST', 'class':'nav-link', 'style':'color: white; font-weight: bold;') }}
-                            </li>
-							{% elseif session.get('auth').peran == "Pemilik" %}
-                            <li class="nav-item">
-								{{ link_to('dashboard/owner/index', 'MY PROPERTY', 'class':'nav-link', 'style':'color: white; font-weight: bold;') }}
-                            </li>
-							{% endif %}
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-									{{ session.get('auth').nama }}
-                                    <span class="caret"></span>
-                                </a>
+								{% if session.get('auth').peran == "Perantau" %}
+									<li class="nav-item">
+										{{ link_to('dashboard/owner/kost', 'MY KOST', 'class':'nav-link', 'style':'color: white; font-weight: bold;') }}
+									</li>
+								{% elseif session.get('auth').peran == "Pemilik" %}
+									<li class="nav-item">
+										{{ link_to('dashboard/owner/kost', 'MY PROPERTY', 'class':'nav-link', 'style':'color: white; font-weight: bold;') }}
+									</li>
+								{% endif %}
+								<li class="nav-item dropdown">
+									<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+										{{ session.get('auth').nama }}
+										<span class="caret"></span>
+									</a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/dashboard/home/profile/{{ session.get('auth').id }}">
-                                        Profile
-                                    </a>
-                                    <a class="dropdown-item" href="{{ url('/dashboard/authentication/logout') }}" onclick="event.preventDefault();
-                                                                                                    document.getElementById('logout-form').submit();">
-                                        Logout
-                                    </a>
+									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+										<a class="dropdown-item" href="/dashboard/home/profile/{{ session.get('auth').id }}">
+											Profile
+										</a>
+										<a class="dropdown-item" href="{{ url('/dashboard/authentication/logout') }}" onclick="event.preventDefault();
+																																				                                                                                                    document.getElementById('logout-form').submit();">
+											Logout
+										</a>
 
-                                    <form id="logout-form" action="{{ url('/dashboard/authentication/logout') }}" method="POST" style="display: none;">
-                                    </form>
-                                </div>
-                            </li>
+										<form id="logout-form" action="{{ url('/dashboard/authentication/logout') }}" method="POST" style="display: none;"></form>
+									</div>
+								</li>
 							{% else %}
-                            <li class="nav-item">
-								{{ link_to('dashboard/index/register', 'REGISTER', 'class':'nav-link', 'style':'color: white; font-weight: bold;') }}
-                            </li>
-                            <li class="nav-item">
-								{{ link_to('dashboard/authentication/index', 'LOGIN', 'class':'nav-link', 'style':'color: white; font-weight: bold;') }}
-                            </li>
-
+								<li class="nav-item">
+									{{ link_to('dashboard/index/register', 'REGISTER', 'class':'nav-link', 'style':'color: white; font-weight: bold;') }}
+								</li>
+								<li class="nav-item">
+									{{ link_to('dashboard/authentication/index', 'LOGIN', 'class':'nav-link', 'style':'color: white; font-weight: bold;') }}
+								</li>
 							{% endif %}
-							{#
-                            @guest
-                                                        @if (Route::has('register'))
-                            @else
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{url('/community')}}" style="color: white; font-weight: bold;">{{ __('COMMUNITY') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{route('owner.kost')}}" style="color: white; font-weight: bold;">{{ __('MY KOST') }}</a>
-                            </li>
-                            @if (auth()->user()->peran == 'Perantau' || auth()->user()->peran == 'Pending' || auth()->user()->peran == 'Pemilik')
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{url('/owner/my_property')}}" style="color: white; font-weight: bold;">{{ __('MY PROPERTY') }}</a>
-                            </li>
-                            @else
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{url('/admin/proposers')}}" style="color: white; font-weight: bold;">{{ __('PROPOSERS') }}</a>
-                            </li>
-                            @endif
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <img src="{{ url('profil_user').'/'. auth()->user()->foto_profil }}" alt="user" height="25vh">
-                                    <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{url('/profile', auth()->user()->id)}}">
-                                        {{ __('Profile') }}
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                                                    document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                            @endguest
-							#}
 						</ul>
 					</div>
 				</div>
 			</nav>
 			<div style="min-height: 9vh;"></div>
 			<main class="py-4" style=" min-height: 100vh; background-color: #FBC94C;">
-				<div
-					class="container">
-{# FLASH SESSION
-    @if(count($errors) > 0)
-                        @foreach($errors->all() as $error)
-    <div class="alert alert-danger">
-        {{$error}}
-    </div>
-    @endforeach
-                    @endif
-
-                    @if(session('success'))
-    <div class="alert alert-warning">
-        {{session('success')}}
-    </div>
-    @endif
-
-                    @if(session('error'))
-    <div class="alert alert-danger">
-        {{session('error')}}
-    </div>
-    @endif
-#}
-{% block content %}{% endblock %}
+				<div class="container">
+					{% if flashSession.has('error') %}
+						<div class="alert alert-danger" role="alert">
+							{{ flashSession.output() }}
+						</div>
+					{% endif %}
+					{% block content %}{% endblock %}
 				</div>
 
 			</main>
@@ -272,4 +213,49 @@
 	<!-- Scripts -->
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<script>
+		function readKTP(input) {
+if (input.files && input.files[0]) {
+var reader = new FileReader();
+
+reader.onload = function (e) {
+$('#preview_ktp').attr('src', e.target.result);
+$('#temp_ktp').prop('hidden', true);
+}
+reader.readAsDataURL(input.files[0]);
+}
+}
+$("#foto_ktp").change(function () {
+readKTP(this);
+});
+
+function readProfil(input) {
+if (input.files && input.files[0]) {
+var reader = new FileReader();
+
+reader.onload = function (e) {
+$('#preview_profil').attr('src', e.target.result);
+$('#temp_profil').prop('hidden', true);
+}
+reader.readAsDataURL(input.files[0]);
+}
+}
+$("#foto_profil").change(function () {
+readProfil(this);
+});
+function readURL(input) {
+if (input.files && input.files[0]) {
+var reader = new FileReader();
+
+reader.onload = function (e) {
+$('#preview_kost').attr('src', e.target.result);
+$('#def').prop('hidden', true);
+}
+reader.readAsDataURL(input.files[0]);
+}
+}
+$("#img_kost").change(function () {
+readURL(this);
+});
+	</script>
 </html>

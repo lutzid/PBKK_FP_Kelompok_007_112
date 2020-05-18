@@ -13,11 +13,15 @@ class KostController extends Controller
     public function indexAction()
     {
         $kosts = Kost::find();
+        $this->view->setVar("kosts", $kosts);
     }
 
     public function createAction()
     {
-        $periodes = Periode::find();
+        $periode = PeriodeKost::find();
+        $fasilitas = FasilitasKost::find();
+        $this->view->setVar("periode", $periode);
+        $this->view->setVar("fasilitas", $fasilitas);
     }
 
     public function storeAction()

@@ -70,7 +70,7 @@ class HomeController extends Controller
         $builder->from(Kost::class)
                 ->where('nama LIKE :search:', 
                     [
-                        'seacrh' => '%' . $seacrh . '%',
+                        'search' => '%' . $search . '%',
                     ]
         );
     }

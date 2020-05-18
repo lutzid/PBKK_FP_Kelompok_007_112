@@ -76,7 +76,6 @@ Home
         </form>
     </div>
 #}
-    <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-11 offset-md-1">
             {#
@@ -124,5 +123,4 @@ Home
                 </div>
             </div>
         </div>
-    </div>
 {% endblock %}
