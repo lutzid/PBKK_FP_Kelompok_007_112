@@ -3,6 +3,7 @@
 namespace MyModel;
 
 use MyModel\BaseModel;
+use Phalcon\Mvc\Model\Relation;
 
 class Kost extends BaseModel
 {
@@ -28,7 +29,10 @@ class Kost extends BaseModel
             'MyModel\Kamar',
             'id_kost',
             [
-                'alias' => 'Kamar'
+                'alias' => 'Kamar',
+                'foreignKey' => [
+                    'action' => Relation::ACTION_CASCADE,
+                ],
             ]
         );
 
@@ -37,7 +41,10 @@ class Kost extends BaseModel
             'MyModel\KostFasilitasKost',
             'id_kost',
             [
-                'alias' => 'KostFasilitasKost'
+                'alias' => 'KostFasilitasKost',
+                'foreignKey' => [
+                    'action' => Relation::ACTION_CASCADE,
+                ],
             ]
         );
 
@@ -46,7 +53,10 @@ class Kost extends BaseModel
             'MyModel\KostPeriodeKost',
             'id_kost',
             [
-                'alias' => 'KostPeriodeKost'
+                'alias' => 'KostPeriodeKost',
+                'foreignKey' => [
+                    'action' => Relation::ACTION_CASCADE,
+                ],
             ]
         );
     }

@@ -3,6 +3,7 @@
 namespace MyModel;
 
 use MyModel\BaseModel;
+use Phalcon\Mvc\Model\Relation;
 
 class Kamar extends BaseModel
 {
@@ -30,7 +31,10 @@ class Kamar extends BaseModel
             'MyModel\Transaksi',
             'id_kamar',
             [
-                'alias' => 'Transaksi'
+                'alias' => 'Transaksi',
+                'foreignKey' => [
+                    'action' => Relation::ACTION_CASCADE,
+                ],
             ]
         );
     }
