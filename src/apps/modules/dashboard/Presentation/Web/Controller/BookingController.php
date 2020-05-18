@@ -13,6 +13,6 @@ class BookingController extends Controller
 
     public function invoiceAction()
     {
-
+        
     }
 }
