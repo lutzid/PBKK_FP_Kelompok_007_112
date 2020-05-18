@@ -5,7 +5,7 @@ namespace Its\Example\Dashboard\Presentation\Web\Controller;
 use Phalcon\Mvc\Controller;
 use MyModel\User;
 
-class HomeController extends Controller
+class HomeController extends BaseController
 {
     //4. Melihat data akun miliknya sendiri
     public function profileAction($id){

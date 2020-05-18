@@ -5,7 +5,7 @@ namespace Its\Example\Dashboard\Presentation\Web\Controller;
 use Phalcon\Mvc\Controller;
 use MyModel\Kost;
 
-class OwnerController extends Controller
+class OwnerController extends BaseController
 {
     // public function indexAction()
     // {

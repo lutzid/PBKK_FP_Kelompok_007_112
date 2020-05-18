@@ -5,7 +5,7 @@ namespace Its\Example\Dashboard\Presentation\Web\Controller;
 use Phalcon\Mvc\Controller;
 use MyModel\User;
 
-class AuthenticationController extends Controller
+class AuthenticationController extends BaseController
 {
     public function indexAction()
     {

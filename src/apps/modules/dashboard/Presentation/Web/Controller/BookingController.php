@@ -8,7 +8,7 @@ use MyModel\Transaksi;
 use Phalcon\Security\Random;
 use Carbon\Carbon;
 
-class BookingController extends Controller
+class BookingController extends BaseController
 {
     //3. Melakukan pemesanan indekos
     public function storeAction()

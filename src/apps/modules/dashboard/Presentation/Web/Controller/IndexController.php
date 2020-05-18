@@ -7,7 +7,7 @@ use Phalcon\Security\Random;
 use MyModel\Kost;
 use MyModel\User;
 
-class IndexController extends Controller
+class IndexController extends BaseController
 {
     public function indexAction()
     {

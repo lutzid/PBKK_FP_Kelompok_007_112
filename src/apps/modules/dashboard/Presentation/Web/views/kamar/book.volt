@@ -2,7 +2,7 @@
 
 {% block content %}
     <form action="{{ url('/dashboard/booking/store') }}" method="post">
-    {#
+
     <div class="row my-1">
         <div class="col-md-3">
             <p>Pesanan</p>
@@ -23,11 +23,11 @@
                     </select>
                 </div>
                 <div class="col-md-3">
-                    <p>Period</p>
+                    <p>Periode</p>
                     <select class="form-control" id="per" name="per" required>
-                        @foreach ($kamar->kost->kostPeriodeKost as $periode)
-                            <option value="{{$periode->periodeKost->id}}">{{$periode->periodeKost->nama}}</option>
-                        @endforeach
+                        {% for per in kost.kostperiodekost %}
+                            <option value="{{ per.periodekost.id }}">{{ per.periodekost.nama }}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 <div class="col-md-6">
@@ -67,7 +67,7 @@
         </table>
         <button type="submit" class="btn btn-info">Confirm Payment</button>
     </div>
-    #}
+
     </form>
 
 {% endblock %}

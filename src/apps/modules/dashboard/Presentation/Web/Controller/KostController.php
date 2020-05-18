@@ -8,7 +8,7 @@ use MyModel\PeriodeKost;
 use Phalcon\Security\Random;
 use MyModel\FasilitasKost;
 
-class KostController extends Controller
+class KostController extends BaseController
 {
     public function indexAction()
     {

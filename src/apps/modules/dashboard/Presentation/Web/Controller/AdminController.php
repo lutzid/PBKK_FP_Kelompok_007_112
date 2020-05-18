@@ -6,7 +6,7 @@ use Phalcon\Mvc\Controller;
 use Phalcon\Security\Random;
 use MyModel\User;
 
-class AdminController extends Controller
+class AdminController extends BaseController
 {
     public function indexAction()
     {

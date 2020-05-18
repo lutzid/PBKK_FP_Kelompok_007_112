@@ -9,7 +9,7 @@ use MyModel\Kamar;
 use MyModel\Kost;
 use Phalcon\Security\Random;
 
-class KamarController extends Controller
+class KamarController extends BaseController
 {
     public function indexAction()
     {
