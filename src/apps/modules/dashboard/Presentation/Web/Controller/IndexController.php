@@ -28,11 +28,31 @@ class IndexController extends BaseController
             $data = $_POST;
             $data['id'] = $random->base64Safe();
             $data['password'] = $this->security->hash($data['password']);
-            $data['foto_profil'] = 'img/user.png';
-            $data['foto_ktp'] = 'img/ktp.png';
             $data['peran'] = 'Perantau';
             $user = new User();
             $user->registrasi($data);
+            if($this->request->hasFiles() == true){
+                $uploads = $this->request->getUploadedFiles();
+                $isuploaded = false;
+                $allpath = "";
+                foreach($uploads as $up)
+                {
+                    $path = 'storage/'.time().'-'.strtolower($up->getname());
+                    $fpath = BASE_PATH . "/public/" . $path;
+                    if($up->moveTo($fpath)){
+                        $isUploaded = true;
+                        $allpath.=$path;
+                    }else{
+                        $isUploaded = false;
+                    }
+                    if($up->getkey() === 'foto_profil'){
+                        $data['foto_profil'] = $allpath;
+                    } 
+                    else if($up->getkey() === 'foto_ktp'){
+                        $data['foto_ktp'] = $allpath;
+                    }
+                }
+            }
             $user->save();
 
             if ($user->save()) {
