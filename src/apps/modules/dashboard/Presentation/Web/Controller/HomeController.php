@@ -64,4 +64,14 @@ class HomeController extends Controller
             }
         }
     }
+
+    public function searchAction()
+    {
+        $builder->from(Kost::class)
+                ->where('nama LIKE :search:', 
+                    [
+                        'seacrh' => '%' . $seacrh . '%',
+                    ]
+        );
+    }
 }
