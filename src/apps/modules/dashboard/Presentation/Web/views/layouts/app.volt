@@ -141,16 +141,20 @@
 						<ul class="navbar-nav ml-auto">
 
                         <!-- Authentication Links -->
+							{% if session.has('auth') %}
+							
+							{% else %}
+                            <li class="nav-item">
+								{{ link_to('dashboard/index/register', 'REGISTER', 'class':'nav-link', 'style':'color: white; font-weight: bold;') }}
+                            </li>
+                            <li class="nav-item">
+								{{ link_to('dashboard/authentication/index', 'LOGIN', 'class':'nav-link', 'style':'color: white; font-weight: bold;') }}
+                            </li>
+
+							{% endif %}
 							{#
                             @guest
                                                         @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}" style="color: white; font-weight: bold;">{{ __('REGISTER') }}</a>
-                            </li>
-                            @endif
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}" style="color: white; font-weight: bold;">{{ __('LOGIN') }}</a>
-                            </li>
                             @else
                             <li class="nav-item">
                                 <a class="nav-link" href="{{url('/community')}}" style="color: white; font-weight: bold;">{{ __('COMMUNITY') }}</a>
