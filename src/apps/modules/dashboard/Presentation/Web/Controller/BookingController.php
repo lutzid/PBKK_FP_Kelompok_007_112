@@ -10,6 +10,7 @@ use Carbon\Carbon;
 
 class BookingController extends Controller
 {
+    //3. Melakukan pemesanan indekos
     public function storeAction()
     {
         $_POST->sub_total = (float)str_replace('.', '', $_POST->sub_total);
@@ -63,6 +64,7 @@ class BookingController extends Controller
 
     }
 
+    //9. Menyetujui pemesanan kamar di sebuah indekos
     public function acceptAction()
     {
         $id = $this->dispatcher->getParam("id");
@@ -79,6 +81,7 @@ class BookingController extends Controller
         $transaksi->save();
     }
 
+    //10. Menolak pemesanan kamar di sebuah indekos
     public function rejectAction()
     {
         $id = $this->dispatcher->getParam("id");
@@ -95,6 +98,7 @@ class BookingController extends Controller
         $transaksi->save();
     }
 
+    //11. Membatalkan pemesanan kamar di sebuah indekos
     public function cancelAction()
     {
         $id = $this->dispatcher->getParam("id");

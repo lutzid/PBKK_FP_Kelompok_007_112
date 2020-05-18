@@ -18,6 +18,7 @@ CREATE TABLE users (
  alamat_ktp varchar (100) NOT NULL,
  alamat_domisili varchar (100) NOT NULL,
  no_hp varchar (15) NOT NULL,
+ peran varchar (20) NOT NULL,
  foto_profil varchar (200) default NULL,
  foto_ktp varchar (200) default NULL,
  created_at datetime default NULL
