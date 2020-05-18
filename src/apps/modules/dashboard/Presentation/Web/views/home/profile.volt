@@ -1,9 +1,5 @@
 {% extends "layouts/app.volt" %}
 
-{% block title %}
-Welcome
-{% endblock %}
-
 {% block content %}
     <div class="row d-flex justify-content-center">
         <div class="col-md-4">

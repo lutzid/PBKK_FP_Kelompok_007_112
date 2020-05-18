@@ -16,9 +16,8 @@ class KamarController extends Controller
 
     }
 
-    public function createAction()
+    public function createAction($id)
     {
-        $id = $this->dispatcher->getParam("id");
         $kost = Kost::findFirst(
             [
                 "conditions" => "id = :id:",
@@ -53,9 +52,8 @@ class KamarController extends Controller
         }
     }
 
-    public function editAction()
+    public function editAction($id)
     {
-        $id = $this->dispatcher->getParam("id");
         $kamar = Kamar::findFirst(
             [
                 "conditions" => "id = :id:",
@@ -68,9 +66,8 @@ class KamarController extends Controller
         $this->view->kamar = $kamar;
     }
 
-    public function updateAction()
+    public function updateAction($id)
     {
-        $id = $this->dispatcher->getParam("id");
         $kamar = Kamar::findFirst(
             [
                 "conditions" => "id = :id:",
@@ -93,9 +90,8 @@ class KamarController extends Controller
         }
     }
 
-    public function destroyAction()
+    public function destroyAction($id)
     {
-        $id = $this->dispatcher->getParam("id");
         $kamar = Kamar::findFirst(
             [
                 "conditions" => "id = :id:",
@@ -113,9 +109,8 @@ class KamarController extends Controller
         }
     }
 
-    public function bookAction()
+    public function bookAction($id)
     {
-        $id = $this->dispatcher->getParam("id");
         $kamar = Kamar::findFirst(
             [
                 "conditions" => "id = :id:",

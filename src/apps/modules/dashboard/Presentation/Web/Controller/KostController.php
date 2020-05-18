@@ -44,9 +44,8 @@ class KostController extends Controller
         }
     }
 
-    public function showAction()
+    public function showAction($id)
     { 
-        $id = $this->dispatcher->getParam("id");
         $kost = Kost::findFirst(
             [
                 "conditions" => "id = :id:",
@@ -59,9 +58,8 @@ class KostController extends Controller
         $this->view->kost = $kost;
     }
 
-    public function editAction()
+    public function editAction($id)
     { 
-        $id = $this->dispatcher->getParam("id");
         $kost = Kost::findFirst(
             [
                 "conditions" => "id = :id:",
@@ -78,9 +76,8 @@ class KostController extends Controller
         $this->view->fasilitas = $fasilitas;
     }
 
-    public function updateAction()
-    { 
-        $id = $this->dispatcher->getParam("id");
+    public function updateAction($id)
+    {
         $kost = Kost::findFirst(
             [
                 "conditions" => "id = :id:",
@@ -103,9 +100,8 @@ class KostController extends Controller
         }
     }
 
-    public function destroyAction()
+    public function destroyAction($id)
     { 
-        $id = $this->dispatcher->getParam("id");
         $kost = Kost::findFirst(
             [
                 "conditions" => "id = :id:",

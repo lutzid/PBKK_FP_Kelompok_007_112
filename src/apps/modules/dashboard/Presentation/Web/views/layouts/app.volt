@@ -4,8 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<title>TEMANRANTAU -
-			{% block title %}{% endblock %}
+		<title>TEMANRANTAU
 		</title>
 
 		<!-- Styles -->
@@ -255,6 +254,20 @@ reader.readAsDataURL(input.files[0]);
 }
 }
 $("#img_kost").change(function () {
+readURL(this);
+});
+function readURL(input) {
+if (input.files && input.files[0]) {
+var reader = new FileReader();
+
+reader.onload = function (e) {
+$('#preview_kamar').attr('src', e.target.result);
+$('#def').prop('hidden', true);
+}
+reader.readAsDataURL(input.files[0]);
+}
+}
+$("#img_kamar").change(function () {
 readURL(this);
 });
 	</script>

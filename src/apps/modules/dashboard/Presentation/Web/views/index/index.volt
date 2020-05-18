@@ -1,9 +1,5 @@
 {% extends "layouts/app.volt" %}
 
-{% block title %}
-Home
-{% endblock %}
-
 {% block content %}
 {#
     <div class="container">
@@ -90,9 +86,7 @@ Home
                 #}
                 {% for kost in kosts %}
                     <div class="card-deck col-md-4" style="margin-bottom: 2.5%;">
-                        {#
-                        <a href="{{ route('kost.show', $kost->id) }}" style="color: black; text-decoration: none;">
-                        #}
+                        <a href="/dashboard/kost/show/{{ kost.id }}" style="color: black; text-decoration: none;">
                             <div class="card">
                                 <div class="card-header p-0">
                 					{{ image(url('img/kost.png'), "width":"100%", "height":"150vh") }}
