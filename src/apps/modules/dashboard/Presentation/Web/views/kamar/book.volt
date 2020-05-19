@@ -1,7 +1,7 @@
 {% extends "layouts/app.volt" %}
 
 {% block content %}
-    <form action="{{ url('/dashboard/booking/store') }}" method="post">
+    <form action="{{ url('/dashboard/booking/store/' ~ kamar.id) }}" method="post">
 
     <div class="row my-1">
         <div class="col-md-3">
