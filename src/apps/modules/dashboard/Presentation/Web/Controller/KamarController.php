@@ -12,9 +12,7 @@ use Phalcon\Security\Random;
 class KamarController extends BaseController
 {
     public function indexAction()
-    {
-
-    }
+    { }
 
     public function createAction($id)
     {
@@ -26,32 +24,41 @@ class KamarController extends BaseController
                 ]
             ]
         );
-        
+
         $this->view->kost = $kost;
     }
 
     //6. Menambahkan kamar di sebuah indekos
-    public function storeAction()
+    public function storeAction($id)
     {
-        if($this->request->isPost())
-        {
-            $id = $this->dispatcher->getParam("id");
+        if ($this->request->isPost()) {
             $random = new Random();
             $data = $_POST;
             $data['id'] = $random->base64Safe();
             $data['id_kost'] = $id;
-            $data['harga'] = (float)str_replace('.', '', $data['harga']);
+            $data['harga'] = (float) str_replace('.', '', $data['harga']);
             $data['status'] = 'Available';
 
             $kamar = new Kamar();
             $kamar->registrasi($data);
-            if($kamar->save())
-            {
+            if ($kamar->save()) {
                 $this->flashSession->success("Data kamar berhasil ditambahkan.");
             } else {
+                $messages = $kamar->getMessages();
+                $this->view->messages = $messages;
+                
                 $this->flashSession->error("Data kamar gagal ditambahkan.");
+
+                return $this->dispatcher->forward(
+                    [
+                        "controller" => "kamar",
+                        "action"     => "create",
+                        "params"     => array($id),
+                    ]
+                );
             }
         }
+        $this->response->redirect('/dashboard/owner/kost');
     }
 
     public function editAction($id)
@@ -85,12 +92,15 @@ class KamarController extends BaseController
         $data['id_kost'] = $kamar->id_kost;
         $data['status'] = $kamar->status;
         $kamar->registrasi($data);
-        if($kamar->save())
-        {
+        if ($kamar->save()) {
             $this->flashSession->success("Data kamar berhasil diperbarui.");
         } else {
+            $messages = $kamar->getMessages();
+            $this->view->messages = $messages;
+
             $this->flashSession->error("Data kamar gagal diperbarui.");
         }
+        $this->response->redirect('/dashboard/owner/kost');
     }
 
     //8. Menghapus kamar di sebuah indekos
@@ -105,12 +115,12 @@ class KamarController extends BaseController
             ]
         );
 
-        if($kamar->delete())
-        {
+        if ($kamar->delete()) {
             $this->flashSession->success("Data kamar berhasil dihapus.");
         } else {
             $this->flashSession->error("Data kamar gagal dihapus.");
         }
+        $this->response->redirect('/dashboard/owner/kost');
     }
 
     public function bookAction($id)

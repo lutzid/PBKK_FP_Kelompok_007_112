@@ -26,8 +26,8 @@ class AdminController extends BaseController
             $data = $_POST;
             $data['id'] = $random->base64Safe();
             $data['password'] = $this->security->hash($data['password']);
-            $data['foto_profil'] = 'storage/avatar3.jpg';
-            $data['foto_ktp'] = 'storage/avatar3.jpg';
+            $data['foto_profil'] = 'img/user.png';
+            $data['foto_ktp'] = 'img/ktp.png';
             $data['peran'] = 'Pemilik';
             $user = new User();
             $user->registrasi($data);

@@ -50,7 +50,7 @@
 											Profile
 										</a>
 										<a class="dropdown-item" href="{{ url('/dashboard/authentication/logout') }}" onclick="event.preventDefault();
-																																				                                                                                                    document.getElementById('logout-form').submit();">
+																																																                                                                                                    document.getElementById('logout-form').submit();">
 											Logout
 										</a>
 
@@ -72,8 +72,25 @@
 			<div style="min-height: 9vh;"></div>
 			<main class="py-4" style=" min-height: 100vh; background-color: #FBC94C;">
 				<div class="container">
+					{% if messages is defined %}
+						{% for message in messages %}
+							<div class="alert alert-danger" role="alert">
+								{{ message }}
+							</div>
+						{% endfor %}
+					{% endif %}
 					{% if flashSession.has('error') %}
 						<div class="alert alert-danger" role="alert">
+							{{ flashSession.output() }}
+						</div>
+					{% endif %}
+					{% if flashSession.has('success') %}
+						<div class="alert alert-success" role="alert">
+							{{ flashSession.output() }}
+						</div>
+					{% endif %}
+					{% if flashSession.has('warning') %}
+						<div class="alert alert-warning" role="alert">
 							{{ flashSession.output() }}
 						</div>
 					{% endif %}
