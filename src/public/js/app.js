@@ -68,7 +68,7 @@ $(document).ready(function() {
 
     function adjustNum() {
         var periode = selectPeriode.val();
-        if (periode == 1) {
+        if (periode == 'prd1') {
             selectNumber.empty();
             for (var d = 1; d <= 29; d++) {
                 var numElem = document.createElement("option");
@@ -77,7 +77,7 @@ $(document).ready(function() {
                 selectNumber.append(numElem);
             }
         }
-        if (periode == 2) {
+        if (periode == 'prd2') {
             selectNumber.empty();
             for (var d = 1; d <= 3; d++) {
                 var numElem = document.createElement("option");
@@ -86,7 +86,7 @@ $(document).ready(function() {
                 selectNumber.append(numElem);
             }
         }
-        if (periode == 3) {
+        if (periode == 'prd3') {
             selectNumber.empty();
             for (var d = 1; d <= 11; d++) {
                 var numElem = document.createElement("option");
@@ -95,7 +95,7 @@ $(document).ready(function() {
                 selectNumber.append(numElem);
             }
         }
-        if (periode == 4) {
+        if (periode == 'prd4') {
             selectNumber.empty();
             for (var d = 1; d <= 5; d++) {
                 var numElem = document.createElement("option");
@@ -110,26 +110,28 @@ $(document).ready(function() {
     selectNumber.on("change", adjustTot);
 
     function adjustTot() {
-        var pric = parseFloat($('#price').val());
-        var admin = parseFloat($('#admin').val());
-        var period = selectPeriode.val();
-        var numb = selectNumber.val();
-        if (period == 1) {
+        let pric = parseFloat($('#price').val());
+        let admin = parseFloat($('#admin').val());
+        let period = selectPeriode.val();
+        let numb = selectNumber.val();
+        let sub_total;
+        if (period == 'prd1') {
             pric = (pric * 1.5) / 30;
-            var sub_total = pric * numb;
+            sub_total = pric * numb;
         }
-        if (period == 2) {
+        if (period == 'prd2') {
             pric = (pric * 1.3) / 4;
-            var sub_total = pric * numb;
+            sub_total = pric * numb;
         }
-        if (period == 3) {
+        if (period == 'prd3') {
             pric = pric * 1;
-            var sub_total = pric * numb;
+            sub_total = pric * numb;
         }
-        if (period == 4) {
+        if (period == 'prd4') {
             pric = pric * 12;
-            var sub_total = pric * numb;
+            sub_total = pric * numb;
         }
+        console.log(period)
         $('#sub_total').val(sub_total).number(true, 0, ',', '.');
         $('#total').val(sub_total + admin).number(true, 0, ',', '.');;
     }

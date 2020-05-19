@@ -123,7 +123,15 @@ class KamarController extends BaseController
                 ]
             ]
         );
-
-        $this->view->kamar = $kamar;
+        $kost = Kost::findFirst(
+            [
+                "conditions" => "id = :id:",
+                "bind" => [
+                    "id" => $kamar->id_kost
+                ]
+            ]
+        );
+        $this->view->setVar("kost", $kost);
+        $this->view->setVar("kamar", $kamar);
     }
 }
