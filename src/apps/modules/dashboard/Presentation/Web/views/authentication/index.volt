@@ -5,18 +5,8 @@
 		<div class="col-md-4">
 			<div class="card">
 				<div class="card-body">
-					{% if flashSession.has('error') %}
-						<div class="alert alert-danger" role="alert">
-							{{ flashSession.output() }}
-						</div>
-					{% endif %}
 					<img src="{{ url('img/user.png') }}" class="img-fluid" alt="user">
 					<div style="height: 20px;"></div>
-					{% if flashSession.has('error') %}
-						<div class="alert alert-danger" role="alert">
-							{{ flashSession.output() }}
-						</div>
-					{% endif %}
 					<form method="POST" action="{{ url('/dashboard/authentication/login') }}">
 						<div class="form-group row">
 							<div class="col-md-10 offset-md-1">

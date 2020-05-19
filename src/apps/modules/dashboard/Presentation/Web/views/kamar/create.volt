@@ -3,7 +3,7 @@
 {% block content %}
 	<div class="row justify-content-center">
 		<div class="col-md">
-			<form method="POST" action="{{ url('/dashboard/kamar/store') }}" enctype="multipart/form-data">
+			<form method="POST" action="/dashboard/kamar/store/{{ kost.id }}" enctype="multipart/form-data">
 				<div class="mysquare col-md text-center">
 					<img src="" id="preview_kamar" width="80%"/>
 					<span class="btn btn-file" id="def">
@@ -19,6 +19,27 @@
 
 							<div class="col-md-6">
 								<input id="nama" type="text" class="form-control" name="nama" required autocomplete="nama" autofocus>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="panjang" class="col-md-4 offset-md-1 col-form-label text-md-left">Panjang</label>
+
+							<div class="col-md-6">
+								<input id="panjang" type="number" class="form-control" name="panjang" required autocomplete="panjang" autofocus>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="lebar" class="col-md-4 offset-md-1 col-form-label text-md-left">Lebar</label>
+
+							<div class="col-md-6">
+								<input id="lebar" type="number" class="form-control" name="lebar" required autocomplete="lebar" autofocus>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="harga" class="col-md-4 offset-md-1 col-form-label text-md-left">Harga</label>
+
+							<div class="col-md-6">
+								<input id="harga" type="number" class="form-control" name="harga" required autocomplete="harga" autofocus>
 							</div>
 						</div>
 
